@@ -4,27 +4,18 @@
   "description": "",
   "main": "app.js",
   "type": "module",
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
   "scripts": {
-    "start": "babel-node app.js",
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^5.11.15"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.5",
-    "@babel/core": "^7.24.5",
-    "@babel/node": "^7.23.9",
-    "@babel/preset-env": "^7.24.5",
-    "@babel/preset-react": "^7.24.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^2.0.19"
   }
 }
