@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
   movie: {
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref: "Movie",
     required: true,
   },
 
@@ -18,7 +19,8 @@ const bookingSchema = new mongoose.Schema({
   },
 
   user: {
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref: "User",
     required: true,
 
   },

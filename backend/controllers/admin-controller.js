@@ -34,7 +34,7 @@ export const addAdmin = async (req, res, next) => {
   }
 
   return res.status(201).json({ admin });
-}
+};
 
 export const adminLogin = async (req, res, next) => {
   const { email, password } = req.body;
@@ -65,3 +65,19 @@ export const adminLogin = async (req, res, next) => {
 
 
 };
+
+
+export const getAdmins = async (req, res, next) => {
+  let admins;
+  try {
+    admins = await Admin.find();
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!admins) {
+    return res.status(404).json({ message: "No Admins found" });
+  }
+
+  return res.status(200).json({ admins });
+}
