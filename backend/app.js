@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import userRouter from "./routes/user-routes.js";
 import adminRouter from "./routes/admin-routes.js";
 import movieRouter from "./routes/movie-routes.js";
+import bookingsRouter from "./routes/booking-route.js";
 dotenv.config();
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/movie", movieRouter);
+app.use("/booking", bookingsRouter);
 
 
 

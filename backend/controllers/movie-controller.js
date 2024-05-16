@@ -1,6 +1,7 @@
 
 import jwt from "jsonwebtoken";
 import Movie from "../models/Movie";
+
 export const addMovie = async (req, res, next) => {
   const extractedToken = req.headers.authorization.split(" ")[1];
   if (!extractedToken && extractedToken.trim() === "") {
@@ -67,4 +68,20 @@ export const getAllMovies = async (req, res, next) => {
   }
 
   return res.status(200).json({ movies });
+}
+
+export const getMovieById = async (req, res, next) => {
+  const id = req.params.id;
+  let movie;
+  try {
+    movie = await Movie.findById(id);
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!movie) {
+    return res.status(404).json({ message: "Movie not found" });
+  }
+
+  return res.status(200).json({ movie });
 }
