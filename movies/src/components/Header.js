@@ -19,7 +19,7 @@ const Header = () => {
     }, []);
 
     return (
-        <AppBar sx = {{bgcolor:"#5b2d46"}}>
+        <AppBar position="sticky" sx = {{bgcolor:"#5b2d46"}}>
             <Toolbar>
                 <Box width = {"20%"}>
                     <MovieIcon />
