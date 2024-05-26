@@ -15,7 +15,6 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/auth" element={<Auth />} />
-
         </Routes>
       </section>
     </div>
