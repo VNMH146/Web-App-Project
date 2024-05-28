@@ -5,9 +5,11 @@ import userRouter from "./routes/user-routes.js";
 import adminRouter from "./routes/admin-routes.js";
 import movieRouter from "./routes/movie-routes.js";
 import bookingsRouter from "./routes/booking-route.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 //middlewares
 app.use(express.json());
