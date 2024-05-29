@@ -7,11 +7,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import React from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 const labelStyle = { mt: 1, mb: 1 };
-const AuthForm = () => {
+const AuthForm = ({ onSubmit, isAdmin }) => {
+  const [inputs, setInputs] = useState({ name: "", email: "", password: "" });
+  const [isSignup, setIsSignup] = useState(false);
+  const handleChange = (e) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit({ inputs, signup: isAdmin ? false : isSignup });
+  }
   return (
     <Dialog PaperProps={{ style: { borderRadius: 20 } }} open={true}>
       <Box sx={{ ml: "auto", padding: 1 }}>
@@ -20,9 +33,9 @@ const AuthForm = () => {
         </IconButton>
       </Box>
       <Typography variant="h4" textAlign={"center"}>
-        Login
+        {isSignup ? "Signup" : "Login"}
       </Typography>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Box
           padding={5}
           display={"flex"}
@@ -32,22 +45,28 @@ const AuthForm = () => {
           margin={"auto"}
           alignContent={"center"}
         >
-          <FormLabel sx={labelStyle}>Name</FormLabel>
+          {!isAdmin && isSignup && <> <FormLabel sx={labelStyle}>Name</FormLabel>
+            <TextField
+              value={inputs.name}
+              onChange={handleChange}
+              margin="normal"
+              variant="standard"
+              type="text"
+              name="name"
+            /></>}
+          <FormLabel sx={labelStyle}>Email</FormLabel>
           <TextField
+            value={inputs.email}
+            onChange={handleChange}
             margin="normal"
             variant="standard"
-            type="text"
-            name="name"
-          />
-          <FormLabel sx={labelStyle}>Gmail</FormLabel>
-          <TextField
-            margin="normal"
-            variant="standard"
-            type="gmail"
-            name="gmail"
+            type="email"
+            name="email"
           />
           <FormLabel sx={labelStyle}>Password</FormLabel>
           <TextField
+            value={inputs.password}
+            onChange={handleChange}
             margin="normal"
             variant="standard"
             type="password"
@@ -59,11 +78,12 @@ const AuthForm = () => {
             fullWidth
             variant="conatined"
           >
-            Login
+            {isSignup ? "Signup" : "Login"}
           </Button>
-          <Button sx={{ mt: 2, borderRadius: 10 }} fullWidth>
-            Switch
-          </Button>
+          {!isAdmin && (
+            <Button onClick={() => setIsSignup(!isSignup)} sx={{ mt: 2, borderRadius: 10 }} fullWidth>
+              Switch To {isSignup ? "Login" : "Signup"}
+            </Button>)}
         </Box>
       </form>
     </Dialog>

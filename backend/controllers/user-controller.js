@@ -39,7 +39,7 @@ export const signup = async (req, res, next) => {
     return res.status(500).json({ message: "Failed to add user" });
   }
 
-  return res.status(201).json({ user });
+  return res.status(201).json({ id: user._id });
 }
 
 export const updateUser = async (req, res, next) => {

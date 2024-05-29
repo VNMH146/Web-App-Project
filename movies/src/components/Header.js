@@ -14,6 +14,7 @@ const Header = () => {
   useEffect(() => {
     getAllMovies()
       .then((data) => setMovies(data.movies))
+      // .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -21,7 +22,9 @@ const Header = () => {
     <AppBar position="sticky" sx={{ bgcolor: "#5b2d46" }}>
       <Toolbar>
         <Box width={"20%"}>
-          <MovieIcon />
+          <Link to="/">
+            <MovieIcon color="primary" />
+          </Link>
         </Box>
 
         <Box width={"30%"} margin={"auto"}>

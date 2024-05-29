@@ -16,8 +16,8 @@ const HomePage = () => {
     <Box width={"100%"} height={"100%"} marginTop={2} margin={"auto"}>
       <Box margin={"auto"} width={"80%"} height={"40vh"} padding={2}>
         <img
-          src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t1.6435-9/127251003_400326008047025_3310802024940106170_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=P2LmLu-yVMAQ7kNvgEz6TWq&_nc_ht=scontent.fsgn5-10.fna&oh=00_AYCwOIKVfZ-HymFEI7q_zXyz_Yx5WSRMYvaL-WcAkEHbQw&oe=667147D2"
-          alt="heo"
+          src="https://files.betacorp.vn/media/images/2024/05/28/1702x621-6-095155-280524-73.jpg"
+          alt="grafield"
           width={"100%"}
           height={"100%"}
         />
