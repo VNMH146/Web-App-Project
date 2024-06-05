@@ -15,8 +15,7 @@ const Admin = () => {
   const getData = (data) => {
     console.log("Admin", data);
     sendAdminAuthRequest(data.inputs)
-      .then((res) => console.log(res))
-      .then(() => dispatch(adminActions.login()))
+      .then(onResReceived)
       .catch((err) => console.log(err));
   };
   return (
