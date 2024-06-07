@@ -5,12 +5,14 @@ import {
   login,
   signup,
   updateUser,
-  getBookingOfUser
+  getBookingOfUser,
+  getUserById
 } from "../controllers/user-controller.js";
 
 const userRouter = express.Router();
 
 userRouter.get("/", getAllUsers);
+userRouter.get("/:id" ,getUserById);
 userRouter.post("/signup", signup);
 userRouter.put("/:id", updateUser);
 userRouter.delete("/:id", deleteUser);

@@ -8,6 +8,8 @@ import Auth from "./components/Auth/Auth";
 import { useSelector, useDispatch } from "react-redux";
 import { userActions, adminActions } from "./store";
 import Booking from "./components/Bookings/Booking";
+import UserProfile from "./profile/UserProfile";
+import AddMovies from "./components/Movies/AddMovies";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,8 +20,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("userId")) {
       dispatch(userActions.login());
-    } 
-    else if (localStorage.getItem("adminId")) {
+    } else if (localStorage.getItem("adminId")) {
       dispatch(adminActions.login());
     }
   }, []);
@@ -33,6 +34,9 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/user" element={<UserProfile />} />
+          <Route path="/add" element={<AddMovies />} />
+
           <Route path="/booking/:id" element={<Booking />} />
         </Routes>
       </section>
