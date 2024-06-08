@@ -88,6 +88,7 @@ const UserProfile = () => {
               <List>
                 {bookings.map((booking, index) => (
                   <ListItem
+                    key={booking._id}
                     sx={{
                       bgcolor: "#00d386",
                       color: "white",
