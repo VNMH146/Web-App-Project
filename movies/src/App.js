@@ -3,13 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import Movies from "./components/Movies/Movies";
-import Admin from "./components/Admin/Admin";
+import Admin from "./components/Auth/Admin";
 import Auth from "./components/Auth/Auth";
 import { useSelector, useDispatch } from "react-redux";
 import { userActions, adminActions } from "./store";
 import Booking from "./components/Bookings/Booking";
 import UserProfile from "./profile/UserProfile";
-import AddMovies from "./components/Movies/AddMovies";
+import AddMovie from "./components/Movies/AddMovie";
+import AdminProfile from "./profile/AdminProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,8 +36,8 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/user" element={<UserProfile />} />
-          <Route path="/add" element={<AddMovies />} />
-
+          <Route path="/add" element={<AddMovie />} />
+          <Route path="/user-admin" element={<AdminProfile />} />
           <Route path="/booking/:id" element={<Booking />} />
         </Routes>
       </section>

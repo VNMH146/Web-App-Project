@@ -6,6 +6,8 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { useState } from "react";
+import { addMovie } from "../../api-helpers/api-helpers"; 
+
 
 const labelProps = {
   mt: 1,
@@ -32,6 +34,9 @@ const AddMovies = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs, actors);
+    addMovie({ ...inputs, actor: actors })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   return (
     <div>
@@ -86,13 +91,21 @@ const AddMovies = () => {
 
           <FormLabel sx={{ labelProps }}> Actor</FormLabel>
           <Box display={"flex"}>
-            <TextField value={actor}
+            <TextField
+              value={actor}
               onChange={(e) => setActor(e.target.value)}
               name="actor"
               variant="standard"
               margin="normal"
             />
-            <Button onClick={() => {setActors([...actors, actor]); setActor("");}}>Add</Button>
+            <Button
+              onClick={() => {
+                setActors([...actors, actor]);
+                setActor("");
+              }}
+            >
+              Add
+            </Button>
           </Box>
           <FormLabel sx={{ labelProps }}>Feature</FormLabel>
           <Checkbox

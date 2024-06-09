@@ -8,14 +8,16 @@ import { getAllMovies } from "../api-helpers/api-helpers";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { adminActions, userActions } from "../store";
-
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
   const [movies, setMovies] = useState([]);
   const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const isAdminLoggedIn = useSelector((state) => state.admin.isLoggedIn);
+  const [selectedMovie, setSelectedMovie] = useState("");
   useEffect(() => {
     getAllMovies()
       .then((data) => setMovies(data.movies))
@@ -23,6 +25,13 @@ const Header = () => {
   }, []);
   const logout = (isAdmin) => {
     dispatch(isAdmin ? adminActions.logout() : userActions.logout());
+  };
+  const handleChange = (e, value) => {
+    setSelectedMovie(value);
+    const movie = movies.find((movie) => movie.title === value);
+    if (!isUserLoggedIn){
+      navigate(`/booking/${movie._id}`);
+    }
   };
   return (
     <AppBar position="sticky" sx={{ bgcolor: "#5b2d46" }}>
@@ -35,6 +44,7 @@ const Header = () => {
 
         <Box width={"30%"} margin={"auto"}>
           <Autocomplete
+            onChange={handleChange}
             freeSolo
             options={movies && movies.map((option) => option.title)}
             renderInput={(params) => (
@@ -55,19 +65,57 @@ const Header = () => {
             value={value}
             onChange={(e, val) => setValue(val)}
           >
-            <Tab key="movies" LinkComponent={Link} to="/movies" label="Movies" />
-            {!isAdminLoggedIn && !isUserLoggedIn && [
-              <Tab key="admin" label="Admin" LinkComponent={Link} to="/admin" />,
-              <Tab key="auth" label="Auth" LinkComponent={Link} to="/auth" />,
-            ]}
+            <Tab
+              key="movies"
+              LinkComponent={Link}
+              to="/movies"
+              label="Movies"
+            />
+            {!isAdminLoggedIn &&
+              !isUserLoggedIn && [
+                <Tab
+                  key="admin"
+                  label="Admin"
+                  LinkComponent={Link}
+                  to="/admin"
+                />,
+                <Tab key="auth" label="Auth" LinkComponent={Link} to="/auth" />,
+              ]}
             {isUserLoggedIn && [
-              <Tab key="userProfile" label="Profile" LinkComponent={Link} to="/user" />,
-              <Tab key="userLogout" onClick={() => logout(false)} label="Logout" LinkComponent={Link} to="/" />,
+              <Tab
+                key="userProfile"
+                label="Profile"
+                LinkComponent={Link}
+                to="/user"
+              />,
+              <Tab
+                key="userLogout"
+                onClick={() => logout(false)}
+                label="Logout"
+                LinkComponent={Link}
+                to="/"
+              />,
             ]}
             {isAdminLoggedIn && [
-              <Tab key="addMovie" label="Add Movie" LinkComponent={Link} to="/add" />,
-              <Tab key="adminProfile" label="Profile" LinkComponent={Link} to="/admin" />,
-              <Tab key="adminLogout" onClick={() => logout(true)} label="Logout" LinkComponent={Link} to="/" />,
+              <Tab
+                key="addMovie"
+                label="Add Movie"
+                LinkComponent={Link}
+                to="/add"
+              />,
+              <Tab
+                key="adminProfile"
+                label="Profile"
+                LinkComponent={Link}
+                to="/admin"
+              />,
+              <Tab
+                key="adminLogout"
+                onClick={() => logout(true)}
+                label="Logout"
+                LinkComponent={Link}
+                to="/"
+              />,
             ]}
           </Tabs>
         </Box>
