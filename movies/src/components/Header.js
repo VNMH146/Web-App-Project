@@ -29,12 +29,12 @@ const Header = () => {
   const handleChange = (e, value) => {
     setSelectedMovie(value);
     const movie = movies.find((movie) => movie.title === value);
-    if (!isUserLoggedIn){
+    if (!isUserLoggedIn) {
       navigate(`/booking/${movie._id}`);
     }
   };
   return (
-    <AppBar position="sticky" sx={{ bgcolor: "#5b2d46" }}>
+    <AppBar position="sticky" sx={{ bgcolor: "#696969" }}>
       <Toolbar>
         <Box width={"20%"}>
           <Link to="/">
