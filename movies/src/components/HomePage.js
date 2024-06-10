@@ -19,22 +19,23 @@ const CarouselContainer = styled(Box)`
   position: relative;
   width: 100%;
   height: 50vh;
-  margin-top: 10px;
   overflow: hidden;
+  margin: auto;
 `;
 
 const Image = styled.img`
-  width: 60%;
+  width: 100%;
   height: 100%;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   position: absolute;
-  left: 20%;
+  top: 0;
+  left: 0;
 `;
 
 const PreviewImage = styled.img`
-  width: 20%;
-  height: 90%;
+  width: 0%;
+  height: 0%;
   opacity: 0.5;
   position: absolute;
   transition: transform 0.5s ease-in-out;
@@ -106,9 +107,9 @@ const HomePage = () => {
         onClick={handlePrevious}
         style={{
           position: "absolute",
-          top: "35%",
-          left: "50px",
-          transform: "translateY(-50%)",
+          top: "30%",
+          left: "10px",
+          color: "white",
         }}
       >
         <ArrowBackIos />
@@ -117,9 +118,9 @@ const HomePage = () => {
         onClick={handleNext}
         style={{
           position: "absolute",
-          top: "35%",
-          right: "50px",
-          transform: "translateY(-50%)",
+          top: "30%",
+          right: "10px",
+          color: "white",
         }}
       >
         <ArrowForwardIos />
