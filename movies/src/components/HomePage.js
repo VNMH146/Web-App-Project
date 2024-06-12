@@ -107,7 +107,7 @@ const HomePage = () => {
         onClick={handlePrevious}
         style={{
           position: "absolute",
-          top: "30%",
+          top: "15%",
           left: "10px",
           color: "white",
         }}
@@ -118,7 +118,7 @@ const HomePage = () => {
         onClick={handleNext}
         style={{
           position: "absolute",
-          top: "30%",
+          top: "15%",
           right: "10px",
           color: "white",
         }}

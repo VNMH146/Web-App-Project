@@ -39,7 +39,7 @@ const Booking = () => {
             variant="h4"
             textAlign={"center"}
           >
-            Book TIckets Of Movie: {movie.title}
+            Book Tickets Of Movie: {movie.title}
           </Typography>
           <Box display={"flex"} justifyContent={"center"}>
             <Box

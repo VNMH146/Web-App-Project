@@ -14,9 +14,8 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-
-const AdminProfile = () => {
-  const [bookings, setBookings] = useState([]);
+const UserProfile = () => {
+  const [bookings, setBookings] = useState();
   const [user, setUser] = useState();
   useEffect(() => {
     getUserBooking()
@@ -32,7 +31,6 @@ const AdminProfile = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-
   return (
     <Box width={"100%"} display="flex">
       <Fragment>
@@ -70,7 +68,7 @@ const AdminProfile = () => {
           </Box>
         )}
         {bookings && (
-          <Box width={"70%"} display="flex" flexDirection={"column"}>
+          <Box width={"80%"} display="flex" flexDirection={"column"}>
             <Typography
               variant="h3"
               fontFamily={"verdana"}
@@ -87,7 +85,9 @@ const AdminProfile = () => {
             >
               <List>
                 {bookings.map((booking, index) => (
+
                   <ListItem
+                    key={index}
                     sx={{
                       bgcolor: "#00d386",
                       color: "white",
@@ -117,6 +117,7 @@ const AdminProfile = () => {
                       <DeleteForeverIcon />
                     </IconButton>
                   </ListItem>
+
                 ))}
               </List>
             </Box>
@@ -127,4 +128,4 @@ const AdminProfile = () => {
   );
 };
 
-export default AdminProfile;
+export default UserProfile;
