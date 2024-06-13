@@ -16,7 +16,8 @@ const Movies = () => {
         margin={"auto"}
         variant="h4"
         padding={2}
-        width={"40%"}
+        width={"50%"}
+        borderRadius={6}
         bgcolor={"#900C3F"}
         color="white"
         textAlign={"center"}
