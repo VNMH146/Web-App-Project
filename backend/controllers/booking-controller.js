@@ -27,7 +27,6 @@ export const newBooking = async (req, res) => {
 
   try {
     booking = new Bookings({
-      title,
       movie,
       date: new Date(`${date}`),
       seatNumber,
