@@ -32,7 +32,7 @@ const Header = () => {
   const handleChange = (e, value) => {
     setSelectedMovie(value);
     const movie = movies.find((movie) => movie.title === value);
-    if (movie && !isUserLoggedIn) {
+    if (movie && !isUserLoggedIn || !isAdminLoggedIn) {
       navigate(`/booking/${movie._id}`);
     }
   };
@@ -123,7 +123,7 @@ const Header = () => {
                 key="adminProfile"
                 label={<Typography sx={{ color: "#ff6f61" }}>Profile</Typography>}
                 LinkComponent={Link}
-                to="/admin"
+                to="/user-admin"
               />,
               <Tab
                 key="adminLogout"

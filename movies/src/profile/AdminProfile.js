@@ -2,14 +2,7 @@ import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { getAdminById } from "../api-helpers/api-helpers";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import Admin from "../components/Auth/Admin";
-
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
 const AdminProfile = () => {
   const [admin, setAdmin] = useState();
   useEffect(() => {
@@ -17,7 +10,6 @@ const AdminProfile = () => {
       .then((res) => setAdmin(res.admin))
       .catch((err) => console.log(err));
   }, []);
-
   return (
     <Box width={"100%"} display="flex">
       <Fragment>
