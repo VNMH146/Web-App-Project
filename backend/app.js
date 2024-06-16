@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 app.use(cors(
   {
-    origin: ["https://movie-booking-website-seven.vercel.app", "http://localhost:3000"],
+    origin: ["https://movie-booking-website-frontend.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   }
