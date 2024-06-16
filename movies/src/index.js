@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL = "https://web-app-project-zhk1.onrender.com";
+axios.defaults.baseURL = "https://web-app-project-vert.vercel.app";
 root.render(
   <React.StrictMode>
     <BrowserRouter>
