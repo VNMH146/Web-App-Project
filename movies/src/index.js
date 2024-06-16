@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "https://movie-booking-website-seven.vercel.app";
 root.render(
   <React.StrictMode>
     <BrowserRouter>
