@@ -1,28 +1,26 @@
-import React from "react";
-import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
-import { FormLabel } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
-import { Checkbox } from "@mui/material";
-import { useState } from "react";
-import { addMovie } from "../../api-helpers/api-helpers"; 
-
-
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { addMovie } from "../../api-helpers/api-helpers";
 const labelProps = {
   mt: 1,
   mb: 1,
 };
-const AddMovies = () => {
+const AddMovie = () => {
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
     posterUrl: "",
     releaseDate: "",
-    actor: "",
-    feature: false,
+    featured: false,
   });
-  const [actors, setActors] = useState([""]);
+  const [actors, setActors] = useState([]);
   const [actor, setActor] = useState("");
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -30,11 +28,10 @@ const AddMovies = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs, actors);
-    addMovie({ ...inputs, actor: actors })
+    addMovie({ ...inputs, actors })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -49,10 +46,10 @@ const AddMovies = () => {
           flexDirection="column"
           boxShadow={"10px 10px 20px #ccc"}
         >
-          <Typography textAlign={"center"} variant={"h5"}>
-            Add Movie
+          <Typography textAlign={"center"} variant="h5" fontFamily={"verdana"}>
+            Add New Movie
           </Typography>
-          <FormLabel sx={{ labelProps }}> Title</FormLabel>
+          <FormLabel sx={labelProps}>Title</FormLabel>
           <TextField
             value={inputs.title}
             onChange={handleChange}
@@ -60,8 +57,7 @@ const AddMovies = () => {
             variant="standard"
             margin="normal"
           />
-
-          <FormLabel sx={{ labelProps }}> Description</FormLabel>
+          <FormLabel sx={labelProps}>Description</FormLabel>
           <TextField
             value={inputs.description}
             onChange={handleChange}
@@ -69,17 +65,15 @@ const AddMovies = () => {
             variant="standard"
             margin="normal"
           />
-
-          <FormLabel sx={{ labelProps }}> Poster URL</FormLabel>
+          <FormLabel sx={labelProps}>Poster URL</FormLabel>
           <TextField
-            value={inputs.porterUrl}
+            value={inputs.posterUrl}
             onChange={handleChange}
             name="posterUrl"
             variant="standard"
             margin="normal"
           />
-
-          <FormLabel sx={{ labelProps }}> Release Date</FormLabel>
+          <FormLabel sx={labelProps}>Release Date</FormLabel>
           <TextField
             type={"date"}
             value={inputs.releaseDate}
@@ -88,13 +82,12 @@ const AddMovies = () => {
             variant="standard"
             margin="normal"
           />
-
-          <FormLabel sx={{ labelProps }}> Actor</FormLabel>
+          <FormLabel sx={labelProps}>Actor</FormLabel>
           <Box display={"flex"}>
             <TextField
               value={actor}
-              onChange={(e) => setActor(e.target.value)}
               name="actor"
+              onChange={(e) => setActor(e.target.value)}
               variant="standard"
               margin="normal"
             />
@@ -107,14 +100,14 @@ const AddMovies = () => {
               Add
             </Button>
           </Box>
-          <FormLabel sx={{ labelProps }}>Feature</FormLabel>
+          <FormLabel sx={labelProps}>Featured</FormLabel>
           <Checkbox
-            name="feature"
-            checked={inputs.feature}
-            onChange={(e) =>
-              setInputs((prevState) => ({
-                ...prevState,
-                feature: e.target.checked,
+            name="fetaured"
+            checked={inputs.featured}
+            onClick={(e) =>
+              setInputs((prevSate) => ({
+                ...prevSate,
+                featured: e.target.checked,
               }))
             }
             sx={{ mr: "auto" }}
@@ -139,4 +132,4 @@ const AddMovies = () => {
   );
 };
 
-export default AddMovies;
+export default AddMovie;
